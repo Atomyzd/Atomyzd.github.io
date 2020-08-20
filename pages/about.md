@@ -3,7 +3,7 @@ layout: page
 title: About Me
 description: 软件工程专业研究生
 keywords: Atomyzd
-comments: false
+comments: true
 menu: 关于
 permalink: /about/
 ---
