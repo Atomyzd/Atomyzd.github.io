@@ -1,0 +1,13 @@
+- name: BiliBili
+  url: https://www.bilibili.com/
+
+- name: 网易云课堂
+  url: https://study.163.com/
+
+- name: Cousera
+  url: www.coursera.org
+
+- name: 中国大学Mooc
+  url: https://www.icourse163.org/
+
+

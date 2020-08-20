@@ -1,0 +1,18 @@
+- name: Research Interests
+  keywords:
+      - Software defect prediction
+      - Software engineering in blockchain
+
+- name: Coding capability
+  keywords:
+      - Python
+      - Java
+      - C++
+      - Solidity
+      - R
+
+- name: Drawing ability
+  keywords:
+      - Origin
+      - Matplotlib and Seaborn in Python
+      - ggplot2 in R
