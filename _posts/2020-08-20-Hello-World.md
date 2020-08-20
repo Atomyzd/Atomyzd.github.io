@@ -10,4 +10,4 @@ keywords: Blog
 
 博客网站上线第一天！！！
 
-![Hello World](/images/blog/Hello_world.jpg)
+![Hello World](/images/blog/Hello-world.jpg)
