@@ -128,7 +128,7 @@ gitment:
 # https://github.com/gitalk/gitalk#install
 gitalk:
     owner: Atomyzd
-    repo: Atomyzd/Atomyzd.github.io
+    repo: blog-comments
     clientID: 8092c659d79b63b0f5a6
     clientSecret: 4596130575aba0bcdc74cccc014e3b9f82d6a2ec
 # 在使用其它评论组件时可点击显示 Disqus
