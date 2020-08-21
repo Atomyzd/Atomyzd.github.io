@@ -19,7 +19,7 @@ keywords: Solidity,笔记
    3. npm install -g solc (注：npm和node安装过程参考 [帖子](https://www.cnblogs.com/xbzhu/p/8886961.html) 
 - Solidity源码与智能合约工作流程图
 ![Solidity Workflow](/images/posts/Solidity/Solidity-work.png)
-- 一个简单的智能合约（存数取数合约）
+- 一个简单的智能合约（存数取数合约，返回多个值）
 
 
 ```python
@@ -33,6 +33,37 @@ contract SimpleStorage{
     function getData() public view returns(uint){
         return myData;        
     }
+    function pureAdd(uint a, uint b) public pure returns(uint sum, uint origin_a){
+        return (a+b, a);
+    }
+}
+```
+
+- 简答的智能合约02
+
+
+```python
+pragma solidity >0.4.22;
+
+contract Car{
+    string brand;
+    uint public price; ///定义一个public变量，相当于定义一个get函数
+    constructor(string initBrand, uint initPrice) public{
+        brand = initBrand;
+        price = initPrice;
+    }
+    function setBrand(string newBrand) public{
+        brand = newBrand;
+    }
+    function getBrand() public view returns(string){
+        return brand;
+    }
+    function setPrice(uint newPrice) public{
+        price = newPrice;
+    }
+    /**function price() public view returns(uint){
+        return price;
+    }*/
 }
 ```
 
