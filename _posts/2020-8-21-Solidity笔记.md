@@ -20,6 +20,7 @@ keywords: Solidity,笔记
 - Solidity源码与智能合约工作流程图
 ![Solidity Workflow](/images/posts/Solidity/Solidity-work.png)
 - 一个简单的智能合约（存数取数合约）
+
 ```python
 pragma solidity >0.4.22;
 
