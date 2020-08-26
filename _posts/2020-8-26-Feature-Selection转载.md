@@ -330,7 +330,9 @@ clf.fit(X, y)
 ```
 
 　　在此代码片段中，将　sklearn.svm.LinearSVC 和 sklearn.feature_selection.SelectFromModel 结合来评估特征的重要性，并选择最相关的特征。之后 sklearn.ensemble.RandomForestClassifier 模型使用转换后的输出训练，即只使用被选出的相关特征。你可以选择其它特征选择方法，或是其它提供特征重要性评估的分类器。更多详情见 [sklearn.pipeline.Pipeline](http://sklearn.lzjqsdd.com/modules/generated/sklearn.pipeline.Pipeline.html#sklearn.pipeline.Pipeline) 相关示例。
-　　
+
+
+
 ***关于更多，参见另一个文档：
 《基于模型的特征选择详解 (Embedded & Wrapper)》***
 
@@ -348,14 +350,21 @@ clf.fit(X, y)
 ------
 
 **参考：**
+
 [1] [1.13. Feature selection](http://scikit-learn.org/stable/modules/feature_selection.html#feature-selection)
+
 [2] [1.13 特征选择](http://sklearn.lzjqsdd.com/modules/feature_selection.html#feature-selection)
+
 [3] [干货：结合Scikit-learn介绍几种常用的特征选择方法](http://www.tuicool.com/articles/ieUvaq)
+
 [4] [使用sklearn做单机特征工程](http://www.cnblogs.com/jasonfreak/p/5448385.html#3601031)
+
 [5] [**使用sklearn优雅地进行数据挖掘**](http://www.cnblogs.com/jasonfreak/p/5448462.html)
+
 [6] [谁动了我的特征？——sklearn特征转换行为全记录](http://www.cnblogs.com/jasonfreak/p/5619260.html)
 
 **注：**
+
 　　**文档[4]实际上是用sklearn实现整个数据挖掘流程，特别是在提高效率上sklearn的并行处理，流水线处理，自动化调参，持久化是使用sklearn优雅地进行数据挖掘的核心。这里是一个简单的总结，具体可查看该文档：**
 
 | 包                  | 类或方法     | 说明                       |
