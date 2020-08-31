@@ -67,7 +67,7 @@ keywords: Solidity，安全漏洞
    
    ​        但是，在 Solidity 0.4.12 之前，存在一个bug，如果空字符串””用作函数调用的参数，则编译器会跳过它。由于编译器的bug,最后会执行this.loggedTransfer(amount, msg.sender,owner);这条语句，因此，资金实际上是转给了合约所有者。
    
-   - ** Type Deduction Overflow**
+   - **Type Deduction Overflow**
    
     ![td](/images/posts/Solidity/honneypots/type-deduction.png)
    
@@ -75,7 +75,7 @@ keywords: Solidity，安全漏洞
    
    ​         但是，调用者没有注意到，使用var会造成类型推导溢出的问题。msg.value的单位是wei，0.1ether是100000000000000000wei,当使用var时，编译器推导出i的类型是uint8,当i=255时，i++则会造成整数溢出，i=0,此时，multi=0,执行第10行代码跳出循环。此时，amountToTransfer=510,即调用合约转进0.1ether，最终只得到510wei的资金，损失巨大。
    
-   - ** Uninitialised Struct **
+   - **Uninitialised Struct**
 
     ![US](/images/posts/Solidity/honneypots/Unintialised-Struct.png)
    
