@@ -1,18 +1,26 @@
 --- 
 layout: page
 title: About Me
-description: 软件工程专业研究生
+description: 知行合一
 keywords: Atomyzd
 comments: true
 menu: 关于
 permalink: /about/
 ---
 
-软件工程专业博士在读。
+江苏海事职业技术学院在职教师。
 
-希望每天都能有所收获。
+爱好：电子产品，装机，深度学习，动漫等
 
 记录知识与生活。
+
+## 教育背景
+
+|  时间   | 学校专业 |  学位/身份 |
+|  ----  | ----  |  ----  |
+| 2014-2018  | 南通大学软件工程 |  学士  |
+| 2018-2020  | 南通大学计算机技术 |  硕士  |
+| 2019-2020  | 澳大利亚莫纳什大学 |  访问学生  |
 
 ## 常用链接
 
@@ -33,3 +41,4 @@ permalink: /about/
 {% endfor %}
 </div>
 {% endfor %}
+
