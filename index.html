@@ -1,140 +1,119 @@
----
-layout: default
-class: home
-css: ['pages/index.css']
-comments: false
----
+<!DOCTYPE html>
+<html lang="zh-CN" data-lang="zh" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <title>HomePage · CV</title>
+  <meta name="theme-color" content="#ffffff">
+  <link rel="icon" type="image/png" href="assets/logo.svg">
+  <link rel="stylesheet" href="layui/css/layui.css">
+  <link rel="stylesheet" href="assets/style.css">
+  <script>
+    (function () {
+      try {
+        var theme = localStorage.getItem('theme') ||
+          (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+        document.documentElement.dataset.theme = theme;
 
-{% assign assets_base_url = site.url %}
-{% if site.cdn.jsdelivr.enabled %}
-{% assign assets_base_url = "https://cdn.jsdelivr.net/gh/" | append: site.repository | append: '@master' %}
-{% endif %}
-<section class="banner">
-    <div class="collection-head">
-      <div class="container">
-        <div class="columns">
-          <div class="column two-thirds">
-            <div class="collection-title">
-              <h1 class="collection-header" id="sub-title"><span>{{ site.subtitle }}</span></h1>
-              <div class="collection-info">
-                <span class="meta-info mobile-hidden">
-                  <span class="octicon octicon-location"></span>
-                  {{ site.location }}
-                </span>
-                {% if site.organization %}
-                <span class="meta-info">
-                  <span class="octicon octicon-organization"></span>
-                  <a href="{{ site.organization_url }}" target="_blank">{{ site.organization }}</a>
-                </span>
-                {% endif %}
-                <span class="meta-info">
-                  <span class="octicon octicon-mark-github"></span>
-                  <a href="https://github.com/{{ site.github_username }}" target="_blank">{{ site.github_username }}</a>
-                </span>
+        var lang = localStorage.getItem('lang') || 'zh';
+        document.documentElement.dataset.lang = lang;
+        document.documentElement.lang = lang === 'zh' ? 'zh-CN' : 'en';
+      } catch (e) {}
+    })();
+  </script>
+</head>
+<body>
+  <header class="topbar">
+    <div class="layui-container">
+      <div class="layui-row layui-col-space32 topbar-inner">
+        <div class="layui-col-xs12 layui-col-md3 topbar-quip">
+          <p class="quip" id="quip" hidden></p>
+        </div>
+        <div class="layui-col-xs12 layui-col-md9 topbar-main">
+          <div class="topbar-tools">
+            <nav class="content-nav" id="nav" data-i18n-label="nav.label" aria-label="Sections">
+              <a href="#research" data-i18n="nav.research">研究兴趣</a>
+              <a href="#experience" data-i18n="nav.experience">教育与工作经历</a>
+              <a href="#projects" data-i18n="nav.projects">科研项目</a>
+              <a href="#publications" data-i18n="nav.publications">代表性成果</a>
+              <a href="#students" data-i18n="nav.students">师生成果</a>
+              <a href="#service" data-i18n="nav.service">学术服务与荣誉</a>
+            </nav>
+
+            <div class="controls">
+              <span class="lang-select">
+                <select id="lang-toggle" data-i18n-label="lang.label" aria-label="Language">
+                  <option value="zh">中文</option>
+                  <option value="en">EN</option>
+                </select>
+                <svg class="lang-caret" viewBox="0 0 10 6" aria-hidden="true">
+                  <path d="M1 1l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.3"
+                    stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+              </span>
+
+              <div class="theme-switch" role="group" data-i18n-label="theme.label" aria-label="Theme">
+                <span class="theme-switch-thumb" aria-hidden="true"></span>
+                <button class="theme-option" type="button" data-theme-value="light" aria-pressed="false"
+                  data-i18n="theme.light">Light</button>
+                <button class="theme-option" type="button" data-theme-value="dark" aria-pressed="false"
+                  data-i18n="theme.dark">Dark</button>
               </div>
-            </div>
-          </div>
-          <div class="column one-third mobile-hidden">
-            <div class="collection-title">
-              {% include sidebar-qrcode.html %}
             </div>
           </div>
         </div>
       </div>
     </div>
-</section>
-<!-- /.banner -->
-<section class="container content">
-    <div class="columns">
-        <div class="column two-thirds" >
-            <ol class="repo-list">
-              {% for post in site.posts %}
-              {% if paginator.page == 1 %}
-              {% if post.topmost == true %}
-              <li class="repo-list-item">
-                <h3 class="repo-list-name">
-                  <a href="{{ site.url }}{{ post.url }}"><span class="top-most-flag">[置顶]</span>{{ post.title }}</a>
-                </h3>
-                <p class="repo-list-description">
-                {{ post.excerpt | strip_html | strip }}
-                </p>
-                <p class="repo-list-meta">
-                <span class="meta-info">
-                  <span class="octicon octicon-calendar"></span> {{ post.date | date: "%Y/%m/%d" }}
-                </span>
-                {% for cat in post.categories %}
-                <span class="meta-info">
-                  <span class="octicon octicon-file-directory"></span>
-                  <a href="{{ site.url }}/categories/#{{ cat }}" title="{{ cat }}">{{ cat }}</a>
-                </span>
-                {% endfor %}
-                </p>
-              </li>
-              {% endif %}
-              {% endif %}
-              {% endfor %}
+  </header>
 
-              {% for post in paginator.posts %}
-              {% if post.topmost != true %}
-              <li class="repo-list-item">
-                <h3 class="repo-list-name">
-                  <a href="{{ site.url }}{{ post.url }}">{{ post.title }}</a>
-                </h3>
-                <p class="repo-list-description">
-                {{ post.excerpt | strip_html | strip }}
-                </p>
-                <p class="repo-list-meta">
-                <span class="meta-info">
-                  <span class="octicon octicon-calendar"></span> {{ post.date | date: "%Y/%m/%d" }}
-                </span>
-                {% for cat in post.categories %}
-                <span class="meta-info">
-                  <span class="octicon octicon-file-directory"></span>
-                  <a href="{{ site.url }}/categories/#{{ cat }}" title="{{ cat }}">{{ cat }}</a>
-                </span>
-                {% endfor %}
-                </p>
-              </li>
-              {% endif %}
-              {% endfor %}
-            </ol>
-        </div>
-        <div class="column one-third">
-            {% include sidebar-search.html %}
-            {% include sidebar-categories-cloud.html %}
-            {% include sidebar-ad.html %}
-        </div>
+  <div class="layui-container">
+    <div class="layui-row layui-col-space32 layout">
+      <aside class="layui-col-xs12 layui-col-md3 sidebar" id="sidebar" data-i18n-label="profile.label" aria-label="Profile"></aside>
+
+      <main id="main" class="layui-col-xs12 layui-col-md9 content">
+        <div id="content-body"></div>
+        <p class="load-error" id="load-error" hidden data-i18n="error.load">
+          无法加载 data/site.js。请确认它和本页在同一目录。
+        </p>
+      </main>
     </div>
-    <div class="pagination text-align">
-      <div class="btn-group">
-        {% if paginator.previous_page %}
-          {% if paginator.previous_page == 1 %}
-              <a href="{{ site.url }}/" class="btn btn-outline">&laquo;</a>
-          {% else %}
-              <a href="{{ site.url }}/page{{paginator.previous_page}}"  class="btn btn-outline">&laquo;</a>
-          {% endif %}
-        {% else %}
-            <button disabled="disabled" href="javascript:;" class="btn btn-outline">&laquo;</button>
-        {% endif %}
-        {% if paginator.page == 1 %}
-            <a href="javascript:;" class="active btn btn-outline">1</a>
-        {% else %}
-            <a href="{{ site.url }}/"  class="btn btn-outline">1</a>
-        {% endif %}
-        {% for count in (2..paginator.total_pages) %}
-          {% if count == paginator.page %}
-              <a href="javascript:;"  class="active btn btn-outline">{{count}}</a>
-          {% else %}
-              <a href="{{ site.url }}/page{{count}}"  class="btn btn-outline">{{count}}</a>
-          {% endif %}
-        {% endfor %}
-        {% if paginator.next_page %}
-            <a href="{{ site.url }}/page{{paginator.next_page}}"  class="btn btn-outline">&raquo;</a>
-        {% else %}
-            <button disabled="disabled" href="javascript:;" class="btn btn-outline">&raquo;</button>
-        {% endif %}
-        </div>
+  </div>
+
+  <footer class="site-footer">
+    <div class="layui-container">
+      <div class="footer-inner">
+        <p id="copyright"></p>
+        <p id="updated"></p>
+      </div>
     </div>
-    <!-- /pagination -->
-</section>
-<!-- /section.content -->
+  </footer>
+
+  <script src="layui/layui.js"></script>
+  <script>
+    (function () {
+      var files = [
+        "data/site.js",
+        "data/profile.js",
+        "data/research.js",
+        "data/experience.js",
+        "data/projects.js",
+        "data/publications.js",
+        "data/students.js",
+        "data/service.js",
+        "assets/script.js"
+      ];
+      var stamp = Date.now();
+      function load(index) {
+        if (index >= files.length) return;
+        var node = document.createElement("script");
+        node.src = files[index] + "?v=" + stamp;
+        node.onload = function () { load(index + 1); };
+        document.body.appendChild(node);
+      }
+      load(0);
+    })();
+  </script>
+</body>
+</html>
